@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SmartLender - Loan Prediction</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            width: 65%;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h1{
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        p{
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        h2{
+            background-color: #7d8f34;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+        }
+
+        input[type=number], select{
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit]{
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type=submit]:hover{
+            background-color: #038d5a;
+        }
+
+        .btn{
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .btn:hover{
+            background-color: #038d5a;
+        }
+
+        .center{
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HOME PAGE -->
+
+        <h1>SmartLender - Loan Approval Prediction</h1>
+
+        <p>
+            This application predicts whether a loan application
+            will be approved based on applicant information like
+            income, education, marital status, credit history,
+            and property area.
+        </p>
+
+        <div class="center">
+            <a href="#predictionForm">
+                <button class="btn">Predict Loan</button>
+            </a>
+        </div>
+
+        <br><br>
+
+        <!-- PREDICT PAGE -->
+
+        <h2 id="predictionForm">
+            Enter your Details for Loan Approval Prediction
+        </h2>
+
+        <form action="/result" method="post">
+
+            <label>Gender</label>
+            <select name="Gender">
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+
+            <label>Married</label>
+            <select name="Married">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label>Dependents</label>
+            <input type="number" name="Dependents" placeholder="Enter Number of Dependents">
+
+            <label>Education</label>
+            <select name="Education">
+                <option value="0">Graduate</option>
+                <option value="1">Not Graduate</option>
+            </select>
+
+            <label>Self Employed</label>
+            <select name="Self_Employed">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label>Applicant Income</label>
+            <input type="number" name="ApplicantIncome" placeholder="Enter Applicant Income">
+
+            <label>Coapplicant Income</label>
+            <input type="number" name="CoapplicantIncome" placeholder="Enter Coapplicant Income">
+
+            <label>Loan Amount</label>
+            <input type="number" name="LoanAmount" placeholder="Enter Loan Amount">
+
+            <label>Loan Amount Term</label>
+            <input type="number" name="Loan_Amount_Term" placeholder="Enter Loan Amount Term">
+
+            <label>Credit History</label>
+            <input type="number" name="Credit_History" placeholder="Enter Credit History">
+
+            <label>Property Area</label>
+            <select name="Property_Area">
+                <option value="0">Urban</option>
+                <option value="1">Semi Urban</option>
+                <option value="2">Rural</option>
+            </select>
+
+            <input type="submit" value="Submit">
+
+        </form>
+
+        <br><br>
+
+        <!-- RESULT PAGE -->
+
+        <div class="center">
+            <h2>Prediction Result</h2>
+
+            <h3>{{ prediction_text }}</h3>
+        </div>
+
+    </div>
+
+</body>
+</html>
